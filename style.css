@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: "Blockhead";
+    src: url("YouBlockhead.ttf"), format(truetype);
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    color-scheme: light;
+    user-select: none;
+    font-family: "Blockhead";
+}
+
+.game {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.chamber-container {
+    aspect-ratio: 1/1;
+    height: 50%;
+    background-image: url("chamber.png");
+    background-size: cover;
+    border-radius: 100vw;
+    margin: 0 auto;
+}
+
+@keyframes spin-chamber {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.fixed-chamber-hint {
+    width: 20%;
+    height: 10%;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 0.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-family: "Blockhead";
+    border: 0;
+    margin-top: 4rem;
+}
+
+.game-over-screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: black;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    color: white;
+    font-family: "Blockhead";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-over-screen h1 {
+    font-size: 6rem;
+    width: fit-content;
+    height: fit-content;
+}
+
+.game-over-screen p {
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+    font-size: 2rem;
+}
+
+#time-until-restart {
+    display: inline-block;
+}
+
+.top-bar {
+    width: 99%;
+    height: 10%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0rem 0.5rem;
+}
+
+.top-bar div {
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    font-size: 2rem;
+}
+
+@keyframes restart {
+    from {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUSSIAN ROULETTE</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <audio src="dryfire.mp3" id="dryfire-audio">
+        <source src="dryfire.mp3" type="audio/mp3">
+    </audio>
+    <audio src="shot.mp3" id="fire-audio">
+        <source src="shot.mp3" type="audio/mp3">
+    </audio>
+</head>
+<body>
+    <div class="game">
+        <div class="top-bar">
+            <div>SCORE: <span id="score">0</span></div>
+            <div>HIGHSCORE: <span id="highscore"></span></div>
+        </div>
+        <div class="chamber-container"></div>
+        <button class="fixed-chamber-hint"></button>
+    </div>
+    <div class="game-over-screen">
+        <h1>YOU DIED!</h1>
+        <p>RESTARTING IN <span id="time-until-restart"></span></p>
+    </div>
+</body>
+</html>

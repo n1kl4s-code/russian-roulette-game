@@ -29,7 +29,11 @@ function start() {
     highscoreDisplay.textContent = highscore;
 
     bulletActionHint.textContent = "LOAD CHAMBER";
-    bulletActionHint.addEventListener("click", load_chamber);
+    if (!userOnMobile) {
+        bulletActionHint.addEventListener("click", load_chamber);
+    } else {
+        bulletActionHint.addEventListener("touchstart", load_chamber);
+    };
 };
 
 function load_chamber() {
@@ -40,8 +44,13 @@ function load_chamber() {
 
 function spin_the_chamber() {
     bulletActionHint.textContent = "SPIN CHAMBER";
-    bulletActionHint.removeEventListener("click", load_chamber);
-    bulletActionHint.addEventListener("click", spin_chamber);
+    if (!userOnMobile) {
+        bulletActionHint.removeEventListener("click", load_chamber);
+        bulletActionHint.addEventListener("click", spin_chamber);
+    } else {
+        bulletActionHint.removeEventListener("touchstart", load_chamber);
+        bulletActionHint.addEventListener("touchstart", spin_chamber);
+    };
 };
 
 function spin_chamber() {
@@ -51,15 +60,24 @@ function spin_chamber() {
 
 function able_to_shoot() {
     bulletActionHint.textContent = "PULL TRIGGER";
-    bulletActionHint.removeEventListener("click", spin_chamber);
-    bulletActionHint.addEventListener("click", pull_trigger);
+    if (!userOnMobile) {
+        bulletActionHint.removeEventListener("click", spin_chamber);
+        bulletActionHint.addEventListener("click", pull_trigger);
+    } else {
+        bulletActionHint.removeEventListener("touchstart", spin_chamber);
+        bulletActionHint.addEventListener("touchstart", pull_trigger);
+    };
 };
 
 function pull_trigger() {
     let currentChamber = Math.floor(Math.random() * (chamberArray.length - 1));
     if (currentChamber === chamberArray.indexOf("loaded")) {
         fireAudio.play();
-        bulletActionHint.removeEventListener("click", pull_trigger);
+        if (!userOnMobile) {
+            bulletActionHint.removeEventListener("click", pull_trigger);
+        } else {
+            bulletActionHint.removeEventListener("touchstart", pull_trigger);
+        };
         if (highscore === 0 || score > highscore) {
             localStorage.setItem("highscore", score)
         };
@@ -73,7 +91,11 @@ function pull_trigger() {
             highscoreDisplay.textContent = score;
         };
         scoreDisplay.textContent = score;
-        bulletActionHint.removeEventListener("click", pull_trigger);
+        if (!userOnMobile) {
+            bulletActionHint.removeEventListener("click", pull_trigger);
+        } else {
+            bulletActionHint.removeEventListener("touchstart", pull_trigger);
+        };
         chamber.style.animation = "";
         spin_the_chamber();
     };
@@ -91,9 +113,9 @@ function countdown_restart() {
     };
 };
 
-if (!userOnMobile) {
-    start();
+if (!window.innerWidth >= 320) {
+    alert("YOUR SCREEN IS TOO SMALL:");
+    window.close();
 } else {
-    alert(`GAME NOT PLAYABLE ON MOBILE DEVICES.\n\nSCREEN WIDTH: ${window.innerWidth / 16}rem\nSCREEN HEIGHT: ${window.innerHeight / 16}rem`);
-    //window.close();
+    start(); 
 };

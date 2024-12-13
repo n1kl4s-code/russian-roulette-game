@@ -94,6 +94,6 @@ function countdown_restart() {
 if (!userOnMobile) {
     start();
 } else {
-    alert("GAME NOT PLAYABLE ON MOBILE DEVICES.");
-    window.close();
+    alert(`GAME NOT PLAYABLE ON MOBILE DEVICES.\n\nSCREEN WIDTH: ${window.innerWidth / 16}rem\nSCREEN HEIGHT: ${window.innerHeight / 16}rem`);
+    //window.close();
 };

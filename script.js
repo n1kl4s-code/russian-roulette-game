@@ -6,7 +6,9 @@ const scoreDisplay = document.querySelector("#score");
 const highscoreDisplay = document.querySelector("#highscore");
 const dryfireAudio = document.querySelector("#dryfire-audio");
 const fireAudio = document.querySelector("#fire-audio");
-const spinAudio = document.querySelector("#spin-audio"); 
+const spinAudio = document.querySelector("#spin-audio");
+
+spinAudio.playbackRate = 0.5;
 
 let score, highscore;
 

@@ -92,6 +92,7 @@ function countdown_restart() {
 
 function fire() {
     fireAudio.play();
+    checkForAchievements();
     if (!userOnMobile) {
         bulletActionHint.removeEventListener("click", pull_trigger);
     } else {
@@ -119,7 +120,27 @@ function dryfire() {
     };
     chamber.style.animation = "";
     spin_the_chamber();
-}
+};
+
+function checkForAchievements() {
+    if (score === 0) {
+        grantAchievement("unlucky bastard", "Your first spin and you directly died...you must be very unlucky, bro...");
+    } else if (score === 5) {
+        grantAchievement("unlucky lucky", "Your sixth spin and it perfectly stopped at the bullet...");
+    } else if (score === 20) {
+        grantAchievement("lucky gambler", "Okay, you survived 20 spins...it was time for you to die.");
+    } else if (score >= 25) {
+        grantAchievement("deal with the devil", "You are suspiciously lucky...I guess I have to ask the devil if you made a deal with him...")
+    } else if (score > 30) {
+        grantAchievement("did you manipulate the chamber?", "Okay, be honest...did you manipulate the chamber? Or how do you want to explain that you survived more than 30 spins???");
+    } else if (score > 40) {
+        grantAchievement("that's my revolver", "Okay, you brought your own revolver with you. Very funny, cheater 😑");
+    };
+};
+
+function grantAchievement(title, description) {
+    alert(`${title.toUpperCase()}\n\n${description}`);
+};
 
 if (!window.innerWidth >= 384) {
     alert("YOUR SCREEN IS TOO SMALL");

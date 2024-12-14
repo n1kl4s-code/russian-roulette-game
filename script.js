@@ -121,7 +121,7 @@ function dryfire() {
     spin_the_chamber();
 }
 
-if (!window.innerWidth >= 320) {
+if (!window.innerWidth >= 384) {
     alert("YOUR SCREEN IS TOO SMALL");
     window.close();
 } else {

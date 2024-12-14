@@ -167,3 +167,138 @@ html, body {
         font-size: 1.2rem;
     }
 }
+
+@media (min-width: 25rem) and (max-width: 35rem) {
+    html, body {
+        height: 100dvh;
+        width: 100dvw;
+    }
+
+    .chamber-container {
+        height: 40dvh;
+    }
+
+    .fixed-chamber-hint {
+        width: 60dvw;
+        font-size: 1.2rem;
+    }
+
+    .top-bar div {
+        font-size: 1rem;
+    }
+
+    .top-bar {
+        width: 96dvw;
+        height: 10dvh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+    }
+
+    .game-over-screen h1 {
+        font-size: 3rem;
+        width: fit-content;
+        height: fit-content;
+    }
+    
+    .game-over-screen p {
+        width: fit-content;
+        height: fit-content;
+        margin: 0 auto;
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 36rem) and (max-width: 50rem) {
+    html, body {
+        height: 100dvh;
+        width: 100dvw;
+    }
+
+    .chamber-container {
+        height: 40dvh;
+    }
+
+    .fixed-chamber-hint {
+        width: 60dvw;
+        font-size: 1.5rem;
+    }
+
+    .top-bar div {
+        font-size: 1.2rem;
+    }
+
+    .top-bar {
+        width: 96dvw;
+        height: 10dvh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+    }
+
+    .game-over-screen h1 {
+        font-size: 4rem;
+        width: fit-content;
+        height: fit-content;
+    }
+    
+    .game-over-screen p {
+        width: fit-content;
+        height: fit-content;
+        margin: 0 auto;
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 51rem) {
+    html, body {
+        height: 100dvh;
+        width: 100dvw;
+    }
+
+    .chamber-container {
+        height: 50dvh;
+    }
+
+    .fixed-chamber-hint {
+        width: 40dvw;
+        font-size: 2rem;
+    }
+
+    .top-bar div {
+        font-size: 1.5rem;
+    }
+
+    .top-bar {
+        width: 96dvw;
+        height: 10dvh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+    }
+
+    .game-over-screen h1 {
+        font-size: 6rem;
+        width: fit-content;
+        height: fit-content;
+    }
+    
+    .game-over-screen p {
+        width: fit-content;
+        height: fit-content;
+        margin: 0 auto;
+        font-size: 2rem;
+    }
+}

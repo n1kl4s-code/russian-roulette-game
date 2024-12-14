@@ -8,8 +8,6 @@ const dryfireAudio = document.querySelector("#dryfire-audio");
 const fireAudio = document.querySelector("#fire-audio");
 const spinAudio = document.querySelector("#spin-audio");
 
-spinAudio.playbackRate = 0.5;
-
 let score, highscore;
 
 let timeBeforeReload = 5;
@@ -55,9 +53,9 @@ function spin_the_chamber() {
 };
 
 function spin_chamber() {
-    chamber.style.animation = "spin-chamber 0.75s ease-out forwards";
+    chamber.style.animation = "spin-chamber 0.5s ease-out forwards";
     spinAudio.play();
-    setTimeout(able_to_shoot, 750);
+    setTimeout(able_to_shoot, 500);
 };
 
 function able_to_shoot() {

@@ -6,8 +6,7 @@ const scoreDisplay = document.querySelector("#score");
 const highscoreDisplay = document.querySelector("#highscore");
 const dryfireAudio = document.querySelector("#dryfire-audio");
 const fireAudio = document.querySelector("#fire-audio");
-
-fireAudio.volume = 0.5;
+const spinAudio = document.querySelector("#spin-audio"); 
 
 let score, highscore;
 
@@ -55,6 +54,7 @@ function spin_the_chamber() {
 
 function spin_chamber() {
     chamber.style.animation = "spin-chamber 0.75s ease-out forwards";
+    spinAudio.play();
     setTimeout(able_to_shoot, 750);
 };
 
@@ -72,32 +72,9 @@ function able_to_shoot() {
 function pull_trigger() {
     let currentChamber = Math.floor(Math.random() * (chamberArray.length - 1));
     if (currentChamber === chamberArray.indexOf("loaded")) {
-        fireAudio.play();
-        if (!userOnMobile) {
-            bulletActionHint.removeEventListener("click", pull_trigger);
-        } else {
-            bulletActionHint.removeEventListener("touchstart", pull_trigger);
-        };
-        if (highscore === 0 || score > highscore) {
-            localStorage.setItem("highscore", score)
-        };
-        bulletActionHint.textContent = "YOU DIED!";
-        gameOverScreen.style.transform = "translateY(0%)";
-        setInterval(countdown_restart, 1000);
+        fire();
     } else {
-        dryfireAudio.play();
-        score++;
-        if (highscore === 0 || score > highscore) {
-            highscoreDisplay.textContent = score;
-        };
-        scoreDisplay.textContent = score;
-        if (!userOnMobile) {
-            bulletActionHint.removeEventListener("click", pull_trigger);
-        } else {
-            bulletActionHint.removeEventListener("touchstart", pull_trigger);
-        };
-        chamber.style.animation = "";
-        spin_the_chamber();
+        dryfire();
     };
 };
 
@@ -113,8 +90,39 @@ function countdown_restart() {
     };
 };
 
+function fire() {
+    fireAudio.play();
+    if (!userOnMobile) {
+        bulletActionHint.removeEventListener("click", pull_trigger);
+    } else {
+        bulletActionHint.removeEventListener("touchstart", pull_trigger);
+    };
+    if (highscore === 0 || score > highscore) {
+        localStorage.setItem("highscore", score)
+    };
+    bulletActionHint.textContent = "YOU DIED!";
+    gameOverScreen.style.transform = "translateY(0%)";
+    setInterval(countdown_restart, 1000);
+};
+
+function dryfire() {
+    dryfireAudio.play();
+    score++;
+    if (highscore === 0 || score > highscore) {
+        highscoreDisplay.textContent = score;
+    };
+    scoreDisplay.textContent = score;
+    if (!userOnMobile) {
+        bulletActionHint.removeEventListener("click", pull_trigger);
+    } else {
+        bulletActionHint.removeEventListener("touchstart", pull_trigger);
+    };
+    chamber.style.animation = "";
+    spin_the_chamber();
+}
+
 if (!window.innerWidth >= 320) {
-    alert("YOUR SCREEN IS TOO SMALL:");
+    alert("YOUR SCREEN IS TOO SMALL");
     window.close();
 } else {
     start(); 

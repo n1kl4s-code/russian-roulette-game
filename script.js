@@ -14,6 +14,9 @@ let timeBeforeReload = 5;
 const timeElement = document.querySelector("#time-until-restart");
 timeElement.textContent = timeBeforeReload;
 
+dryfireAudio.volume = 0.5;
+spinAudio.volume = 0.5;
+
 let chamberArray = ["empty", "empty", "empty", "empty", "empty", "empty"];
 
 function start() {
@@ -92,7 +95,6 @@ function countdown_restart() {
 
 function fire() {
     fireAudio.play();
-    checkForAchievements();
     if (!userOnMobile) {
         bulletActionHint.removeEventListener("click", pull_trigger);
     } else {
@@ -103,6 +105,7 @@ function fire() {
     };
     bulletActionHint.textContent = "YOU DIED!";
     gameOverScreen.style.transform = "translateY(0%)";
+    checkForAchievements();
     setInterval(countdown_restart, 1000);
 };
 
